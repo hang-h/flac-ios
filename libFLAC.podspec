@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://xiph.org/flac/"
 
-  s.license      = { :type => "Xiph", :file => "flac/COPYING.Xiph" }
+  s.license      = { :type => "Xiph", :file => "COPYING" }
 
   s.author             = { "Yehor Popovych (packager)" => "popovych.yegor@gmail.com" }
   s.social_media_url   = "https://planet.xiph.org/"

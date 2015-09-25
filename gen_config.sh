@@ -30,6 +30,8 @@ cp config.h ../no-ogg/
 ./configure --host=arm-apple-darwin --disable-xmms-plugin --disable-doxygen-docs
 cp config.h ../with-ogg/
 
+cp COPYING.Xiph ../COPYING
+
 cd ../
 #git clean -f
 #git clean -fd
