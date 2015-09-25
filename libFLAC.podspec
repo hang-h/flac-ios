@@ -49,10 +49,11 @@ Pod::Spec.new do |s|
   s.subspec 'Base' do |core|
   	core.source_files = "flac/src/libFLAC/*.c",
                         "flac/include/FLAC/*.h",
+                        "assert.h",
                         "no-ogg/config.h"
                     
-    core.exclude_files = "flac/src/libFLAC/ogg*.c"
-  	core.public_header_files = "flac/include/FLAC/*.h", "no-ogg/config.h"
+    core.exclude_files = "flac/src/libFLAC/ogg*.c", "flac/include/FLAC/assert.h"
+  	core.public_header_files = "flac/include/FLAC/*.h", "assert.h", "no-ogg/config.h"
   	core.header_dir = "FLAC"
   	core.requires_arc = false
   
