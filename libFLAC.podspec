@@ -33,7 +33,7 @@ Pod::Spec.new do |s|
   # This is headers from include/share folder
   s.subspec 'CoreShareHeaders' do |sh|
   	sh.source_files = "flac/include/share/**/*.h"
-  	sh.private_header_files = "flac/include/share/**/*.h"
+  	#sh.private_header_files = "flac/include/share/**/*.h"
   	sh.header_mappings_dir = "flac/include"
   	sh.requires_arc = false
   end
