@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://xiph.org/flac/"
 
-  s.license      = { :type => "BSD", :file => "flac/COPYING" }
+  s.license      = { :type => "Xiph", :file => "flac/COPYING.Xiph" }
 
   s.author             = { "Yehor Popovych (packager)" => "popovych.yegor@gmail.com" }
   s.social_media_url   = "https://planet.xiph.org/"
@@ -20,25 +20,58 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/ypopovych/flac-ios.git",
                      :tag => "master",
                      :submodules => true }
-
-  #s.compiler_flags = "-O3",
-  #                   "-Wno-conversion"
+  s.compiler_flags = "-DHAVE_CONFIG_H",
+  					 "-Wno-unused",
+  					 "-Wno-conversion"
                      
   s.requires_arc = false
-
-  s.source_files = "flac/src/libFLAC",
-                   "flac/include/FLAC/*.h",
-                   "no-ogg/config.h"
-        
-  s.public_header_files = "flac/include/FLAC/*.h", "no-ogg/config.h"
   
-  s.header_dir = "FLAC"
+  s.module_name = "FLAC"
   
-  s.subspec 'Ogg' do |ogg|
-  	ogg.source_files = "with-ogg/config.h"
-  	ogg.public_header_files = "with-ogg/config.h"
-  	ogg.dependency "libogg", "~>1.3.0"
+  s.default_subspec = "Base" # Base version by default 
+  
+  # This is headers from include/share folder
+  s.subspec 'CoreShareHeaders' do |sh|
+  	sh.source_files = "flac/include/share/**/*.h"
+  	sh.private_header_files = "flac/include/share/**/*.h"
+  	sh.header_mappings_dir = "flac/include"
+  	sh.requires_arc = false
   end
+  
+  # This is headers from src/libFLAC/include folder
+  s.subspec 'CorePrivateHeaders' do |ph|
+  	ph.source_files = "flac/src/libFLAC/include/**/*.h"
+  	ph.header_mappings_dir = "flac/src/libFLAC/include"
+  	ph.requires_arc = false
+  end
+  
+  # Sourced of the library without Ogg
+  s.subspec 'Base' do |core|
+  	core.source_files = "flac/src/libFLAC/*.c",
+                        "flac/include/FLAC/*.h",
+                        "no-ogg/config.h"
+                    
+    core.exclude_files = "flac/src/libFLAC/ogg*.c"
+  	core.public_header_files = "flac/include/FLAC/*.h", "no-ogg/config.h"
+  	core.header_dir = "FLAC"
+  	core.requires_arc = false
+  
+  	core.dependency "libFLAC/CoreShareHeaders"
+  	core.dependency "libFLAC/CorePrivateHeaders"
+  end
+  
+  
+  
+  # Config with Ogg and Ogg source files.
+  #s.subspec 'Ogg' do |ogg|
+  #	ogg.source_files = "with-ogg/config.h", "flac/src/libFLAC/ogg*.c"
+  #	ogg.public_header_files = "with-ogg/config.h"
+  #	ogg.requires_arc = false
+  #	ogg.header_dir = "FLAC"
+  #	
+  #	ogg.dependency "libFLAC/Base"
+  #	ogg.dependency "libogg", "~>1.3.0"
+  #end
   
 end
 
