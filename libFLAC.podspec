@@ -32,20 +32,16 @@ Pod::Spec.new do |s|
   
   # This is headers from include/share folder
   s.subspec 'CoreShareHeaders' do |sh|
-  	sh.source_files = "flac/include/share/**/*.h",
-  	                  "libFLAC/include/FLAC/assert.h"
-  	#sh.private_header_files = "flac/include/share/**/*.h"
-  	sh.public_header_files = "libFLAC/include/FLAC/assert.h"
+  	sh.source_files = "flac/include/share/**/*.h"
+  	sh.private_header_files = "flac/include/share/**/*.h"
   	sh.header_mappings_dir = "flac/include"
   	sh.requires_arc = false
   end
   
   # This is headers from src/libFLAC/include folder
   s.subspec 'CorePrivateHeaders' do |ph|
-  	ph.source_files = "flac/src/libFLAC/include/**/*.h",
-  	                  "libFLAC/include/FLAC/assert.h"
-  	#ph.private_header_files = "flac/src/libFLAC/include/**/*.h"
-  	ph.public_header_files = "libFLAC/include/FLAC/assert.h"
+  	ph.source_files = "flac/src/libFLAC/include/**/*.h"
+  	ph.private_header_files = "flac/src/libFLAC/include/**/*.h"
   	ph.header_mappings_dir = "flac/src/libFLAC/include"
   	ph.requires_arc = false
   end
@@ -54,15 +50,16 @@ Pod::Spec.new do |s|
   s.subspec 'Base' do |core|
   	core.source_files = "flac/src/libFLAC/*.c",
                         "flac/include/FLAC/*.h",
-                        "libFLAC/include/FLAC/assert.h",
+                        "assert.h",
                         "no-ogg/config.h"
                     
     core.exclude_files = "flac/src/libFLAC/ogg*.c", "flac/include/FLAC/assert.h"
   	core.public_header_files = "flac/include/FLAC/*.h", 
-  	                           "libFLAC/include/FLAC/assert.h",
+  	                           "assert.h",
   	                           "no-ogg/config.h"
   	core.header_dir = "FLAC"
   	core.requires_arc = false
+  	core.module_map = "libFLAC.modulemap"
   
   	core.dependency "libFLAC/CoreShareHeaders"
   	core.dependency "libFLAC/CorePrivateHeaders"
