@@ -18,11 +18,11 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "6.0"
 
   s.source       = { :git => "https://github.com/ypopovych/flac-ios.git",
-                     :tag => "master",
+                     :tag => s.version,
                      :submodules => true }
   s.compiler_flags = "-DHAVE_CONFIG_H",
-  					 "-Wno-unused",
-  					 "-Wno-conversion"
+                     "-Wno-unused",
+                     "-Wno-conversion"
                      
   s.requires_arc = false
   
