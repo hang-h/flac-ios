@@ -32,15 +32,18 @@ Pod::Spec.new do |s|
   
   # This is headers from include/share folder
   s.subspec 'CoreShareHeaders' do |sh|
-  	sh.source_files = "flac/include/share/**/*.h"
+  	sh.source_files = "flac/include/share/**/*.h", "assert.h"
   	#sh.private_header_files = "flac/include/share/**/*.h"
+  	sh.public_header_files = "assert.h"
   	sh.header_mappings_dir = "flac/include"
   	sh.requires_arc = false
   end
   
   # This is headers from src/libFLAC/include folder
   s.subspec 'CorePrivateHeaders' do |ph|
-  	ph.source_files = "flac/src/libFLAC/include/**/*.h"
+  	ph.source_files = "flac/src/libFLAC/include/**/*.h", "assert.h"
+  	#ph.private_header_files = "flac/src/libFLAC/include/**/*.h"
+  	ph.public_header_files = "assert.h"
   	ph.header_mappings_dir = "flac/src/libFLAC/include"
   	ph.requires_arc = false
   end

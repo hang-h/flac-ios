@@ -98,7 +98,7 @@
 #define HAVE_LROUND 1
 
 /* Define to 1 if you have the <memory.h> header file. */
-#define HAVE_MEMORY_H 1
+#define HAVE_MEMORY_H 0
 
 /* Define to 1 if the system has the type `socklen_t'. */
 /* #undef HAVE_SOCKLEN_T */
