@@ -1,0 +1,6 @@
+framework module FLAC {
+  umbrella header "libFLAC-umbrella.h"
+
+  export *
+  module * { export * }
+}
