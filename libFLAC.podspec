@@ -65,6 +65,10 @@ Pod::Spec.new do |s|
   
   	core.dependency "libFLAC/CoreShareHeaders"
   	core.dependency "libFLAC/CorePrivateHeaders"
+  	
+  	core.xcconfig = {
+  	    'USER_HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/libFLAC/flac" "${PODS_ROOT}/libFLAC/flac/include" "${PODS_ROOT}/libFLAC/no-ogg" "${PODS_ROOT}/libFLAC/flac/include/share" "${PODS_ROOT}/libFLAC/flac/src/libFLAC/include"'
+  	}
   end
   
   
