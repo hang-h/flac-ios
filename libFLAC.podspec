@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "libFLAC"
-  s.version      = "1.3.2"
+  s.version      = "1.3.3"
   s.summary      = "Free Lossless Audio Codec library"
 
   s.description  = <<-DESC
@@ -27,8 +27,6 @@ Pod::Spec.new do |s|
   s.requires_arc = false
   
   s.module_name = "FLAC"
-  
-  s.module_map = "libFLAC.modulemap"
   
   s.default_subspec = "Base" # Base version by default 
   
