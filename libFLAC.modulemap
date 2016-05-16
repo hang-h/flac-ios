@@ -1,5 +1,5 @@
 framework module FLAC {
-  umbrella header "libFLAC-umbrella.h"
+  umbrella header "flac/include/FLAC/all.h"
 
   export *
   module * { export * }
