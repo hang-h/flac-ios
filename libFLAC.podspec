@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "libFLAC"
-  s.version      = "1.3.3"
+  s.version      = "1.3.4"
   s.summary      = "Free Lossless Audio Codec library"
 
   s.description  = <<-DESC
@@ -64,9 +64,6 @@ Pod::Spec.new do |s|
   	core.dependency "libFLAC/CoreShareHeaders"
   	core.dependency "libFLAC/CorePrivateHeaders"
   	
-  	core.xcconfig = {
-  	    'USER_HEADER_SEARCH_PATHS' => '$(inherited) "${PODS_ROOT}/libFLAC/flac" "${PODS_ROOT}/libFLAC/flac/include" "${PODS_ROOT}/libFLAC/no-ogg" "${PODS_ROOT}/libFLAC/flac/include/share" "${PODS_ROOT}/libFLAC/flac/src/libFLAC/include"'
-  	}
   end
   
   
